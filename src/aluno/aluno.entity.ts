@@ -10,7 +10,7 @@ export class AlunoEntity{
     @Column ('text') 
     nome : string;
 
-    @CreateDateColumn() 
+    @Column('date') 
     data_nascimento : Date;
 
     @Column ('text') 

@@ -1,6 +1,7 @@
-import { Controller, Get, Post, Put } from '@nestjs/common';
+import { Controller, Get, Post, Put, Body, Param } from '@nestjs/common';
 import { get } from 'http';
 import { AlunoService } from './aluno.service';
+import { AlunoData } from './aluno.data';
 
 @Controller('aluno')
 export class AlunoController {
@@ -8,19 +9,27 @@ export class AlunoController {
 
     //cadastrar aluno
     @Post()
-    createAluno(){}
+    createAluno(@Body() data: AlunoData){
+        return this.alunoService.createAluno(data)
+    }
 
     //atualizar dados dos aluno
     @Put(':id')
-    updateAluno(){}
+    updateAluno(@Param('id') id: string, @Body() data : Partial<AlunoData>){
+        return this.alunoService.updateAluno(id, data)
+    }
     
     //mostrar dados especifico do aluno
     @Get(':id')
-    showOneAluno(){}
+    showOneAluno(@Param('id') id: string){
+        return this.alunoService.showOneAluno(id);
+    }
     
     //mostrar dados de todos alunos
     @Get()
-    showAllAlunos(){}
+    showAllAlunos(){
+        return this.alunoService.showAllAlunos();
+    }
 
 
 
