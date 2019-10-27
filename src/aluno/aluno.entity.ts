@@ -14,18 +14,22 @@ export class AlunoEntity{
     @Column('date') 
     data_nascimento : Date;
 
-    @Column ('text') 
-    cpf : string;
+    //Definindo tamanho CPF 
+    //Apesar de colocar CPF como number ele permite a inserção de letras
+    //infelizmente não consegui resolver a validação dessa forma
+    //porem o tamanho está estabelecido e funcionando
+    @Column ({ type: 'varchar', length: 11}) 
+    cpf : number;
     
     @Column ('double precision') 
     nota : Double;
-
+ 
     //relacionamento um aluno pode ter 1 ou varios endereços 
 
-    @OneToMany(type => EnderecoEntity, endereco => endereco.aluno) 
-    endereco : AlunoEntity[];
+    //@OneToMany(type => EnderecoEntity, endereco => endereco.aluno) 
+    //endereco : AlunoEntity[];
 
-    //Ajuda da documentação
+    //Exemplo documentação 
     //@OneToMany(type => Photo, photo => photo.author) // note: we will create author property in the Photo class below
     //photos: Photo[];
 

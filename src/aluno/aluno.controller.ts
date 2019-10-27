@@ -33,21 +33,12 @@ export class AlunoController {
 
     //Apagar aluno 
     //Acabei fazendo o delete porque tive que apagar todos os alunos que ja tinha sido cadastrados 
-    //tinha usado nota como numeric, mas só aceitava numeros inteiros
-    //assim fiz o delete apaguei todos os alunos e mudei o tipo do atributo da tabela.
 
     @Delete(':id')
     deleteAluno(@Param('id') id: string){
         return this.alunoService.deleteAluno(id);
     }
  
-
-
-
-
-    
-
-
 
 
 }

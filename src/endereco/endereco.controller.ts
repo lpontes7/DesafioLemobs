@@ -1,4 +1,4 @@
-import { Controller, Post, Get, Body, Param } from '@nestjs/common';
+import { Controller, Post, Get, Body, Param, Delete } from '@nestjs/common';
 import { EnderecoService } from './endereco.service';
 import { EnderecoData } from './endereco.data';
 
@@ -20,5 +20,11 @@ export class EnderecoController {
     ShowAllEndBairro(@Param('bairro') bairro: string){
         return this.enderecoService.ShowAllEndBairro(bairro);
     }
+
+    @Delete(':id')
+    deleteAluno(@Param('id') id: string){
+        return this.enderecoService.deleteAluno(id);
+    }
+ 
 
 }

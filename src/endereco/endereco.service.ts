@@ -22,6 +22,10 @@ export class EnderecoService {
     async ShowAllEndBairro(bairro: string){
         return await this.enderecoRepository.find({where :{bairro :bairro}})
     }
-
-
+    
+    async deleteAluno(id: string){
+        await this.enderecoRepository.delete({id});
+        return {deleted : true};
+    } 
+       
 }
