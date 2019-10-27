@@ -28,5 +28,9 @@ export class AlunoService {
         return await this.alunoRepository.find();
     }
 
+    async deleteAluno(id: string){
+        await this.alunoRepository.delete({id});
+        return {deleted : true};
+    }
 
 }

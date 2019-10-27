@@ -1,4 +1,4 @@
-import { Controller, Get, Post, Put, Body, Param } from '@nestjs/common';
+import { Controller, Get, Post, Put, Body, Param, Delete } from '@nestjs/common';
 import { get } from 'http';
 import { AlunoService } from './aluno.service';
 import { AlunoData } from './aluno.data';
@@ -31,6 +31,16 @@ export class AlunoController {
         return this.alunoService.showAllAlunos();
     }
 
+    //Apagar aluno 
+    //Acabei fazendo o delete porque tive que apagar todos os alunos que ja tinha sido cadastrados 
+    //tinha usado nota como numeric, mas só aceitava numeros inteiros
+    //assim fiz o delete apaguei todos os alunos e mudei o tipo do atributo da tabela.
+
+    @Delete(':id')
+    deleteAluno(@Param('id') id: string){
+        return this.alunoService.deleteAluno(id);
+    }
+ 
 
 
 

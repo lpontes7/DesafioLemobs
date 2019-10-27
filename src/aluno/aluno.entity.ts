@@ -1,4 +1,4 @@
-import { Entity, PrimaryGeneratedColumn, Column, CreateDateColumn } from 'typeorm';
+import { Entity, PrimaryGeneratedColumn, Column, CreateDateColumn, Double } from 'typeorm';
 
 @Entity('aluno')
 
@@ -16,8 +16,8 @@ export class AlunoEntity{
     @Column ('text') 
     cpf : string;
     
-    @Column ('numeric') 
-    nota : string;
+    @Column ('double precision') 
+    nota : Double;
 
 
 
