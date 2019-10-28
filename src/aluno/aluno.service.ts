@@ -41,7 +41,6 @@ export class AlunoService {
         return await this.alunoRepository.find();
     }
 
-    //programar a função 
     async showAlunoMedia(){
 
         //soma das medias 
@@ -64,12 +63,36 @@ export class AlunoService {
             .where("user.nota > :nota", { nota: media })
             .getRawMany();
         
-        return {alunMaiorMedia}
+        return {alunMaiorMedia, media}
     }
 
      //programar a função 
     async showAlunoCriterio(nota: Double, criterio : string){
-        return await this.alunoRepository.find({});
+        
+
+        if (criterio == ">"){
+            const ListaAlunos = await getRepository(AlunoEntity)
+            .createQueryBuilder("user")
+            .select("user")
+            .where("user.nota > :nota", { nota: nota })
+            .getRawMany();
+        
+            return {ListaAlunos};
+        }
+        else if (criterio == "<") {
+            const ListaAlunos = await getRepository(AlunoEntity)
+            .createQueryBuilder("user")
+            .select("user")
+            .where("user.nota < :nota", { nota: nota })
+            .getRawMany();
+        
+            return {ListaAlunos};
+        } 
+        else {
+                
+            return {criterio : false}
+        }
+
     }
 
     async deleteAluno(id: string){
