@@ -24,7 +24,7 @@ export class EnderecoEntity{
     
     //relacionamento 1 endereço pode pertencer a 1 ou varios alunos 
     
-    //@ManyToOne(type => AlunoEntity , aluno => aluno.endereco)
+    //@ManyToOne(type => AlunoEntity , aluno => aluno.enderecos)
     //aluno : AlunoEntity ;
 
      //Exemplo documentação 

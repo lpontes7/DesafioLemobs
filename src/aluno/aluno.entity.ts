@@ -27,7 +27,7 @@ export class AlunoEntity{
     //relacionamento um aluno pode ter 1 ou varios endereços 
 
     //@OneToMany(type => EnderecoEntity, endereco => endereco.aluno) 
-    //endereco : AlunoEntity[];
+    //enderecos : EnderecoEntity[];
 
     //Exemplo documentação 
     //@OneToMany(type => Photo, photo => photo.author) // note: we will create author property in the Photo class below
