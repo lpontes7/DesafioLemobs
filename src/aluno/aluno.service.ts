@@ -9,10 +9,23 @@ import { AlunoData } from './aluno.data';
 export class AlunoService {
     constructor (@InjectRepository(AlunoEntity) private alunoRepository: Repository<AlunoEntity>) {} 
 
-    async createAluno(data: AlunoData){
-        const aluno = await this.alunoRepository.create(data);
-        await this.alunoRepository.save(aluno);
-        return aluno;
+    async createAluno(data: AlunoData, cpf : AlunoData["cpf"]){
+        
+        //Não permitir inserir cpf igual
+        //Logica não está funcionando 
+        //CPF está como unique não está adicionando igual
+        //Porem logica para avisar que já exite não está correta
+
+        const CpfExists = await this.alunoRepository.findOne({ where:{cpf}});
+        
+        if (!CpfExists) {
+            const aluno = await this.alunoRepository.create(data);
+            await this.alunoRepository.save(aluno);
+            return aluno;
+        } 
+        else {
+            return {Cpf : true};
+        }
     }
 
     async updateAluno(id: string, data: Partial <AlunoData> ){
@@ -26,6 +39,16 @@ export class AlunoService {
 
     async showAllAlunos(){
         return await this.alunoRepository.find();
+    }
+
+    //programar a função 
+    async showAlunoMedia(){
+        return await this.alunoRepository.find({});
+    }
+
+     //programar a função 
+    async showAlunoCriterio(){
+        return await this.alunoRepository.find({});
     }
 
     async deleteAluno(id: string){

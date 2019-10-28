@@ -18,7 +18,8 @@ export class AlunoEntity{
     //Apesar de colocar CPF como number ele permite a inserção de letras
     //infelizmente não consegui resolver a validação dessa forma
     //porem o tamanho está estabelecido e funcionando
-    @Column ({ type: 'varchar', length: 11}) 
+    //Unique definido 
+    @Column ({ type: 'varchar', length: 11, unique: true}) 
     cpf : number;
     
     @Column ('double precision') 
