@@ -1,5 +1,5 @@
 import { Injectable } from '@nestjs/common';
-import { Repository } from 'typeorm';
+import { Repository, Double, createQueryBuilder, getConnection, getRepository, } from 'typeorm';
 import { InjectRepository } from '@nestjs/typeorm';
 import { AlunoEntity } from './aluno.entity';
 import { AlunoData } from './aluno.data';
@@ -43,11 +43,32 @@ export class AlunoService {
 
     //programar a função 
     async showAlunoMedia(){
-        return await this.alunoRepository.find({});
+
+        //soma das medias 
+        const sum = await getRepository(AlunoEntity)
+            .createQueryBuilder("user")
+            .select("SUM(user.nota)", "sum")
+            .getRawOne();
+
+        //quantidade de notas
+        const count = await getRepository(AlunoEntity)
+            .createQueryBuilder("user")
+            .select("COUNT(user.nota)", "count")
+            .getRawOne();
+        
+        let media = sum.sum / count.count
+
+        const alunMaiorMedia = await getRepository(AlunoEntity)
+            .createQueryBuilder("user")
+            .select("user")
+            .where("user.nota > :nota", { nota: media })
+            .getRawMany();
+        
+        return {alunMaiorMedia}
     }
 
      //programar a função 
-    async showAlunoCriterio(){
+    async showAlunoCriterio(nota: Double, criterio : string){
         return await this.alunoRepository.find({});
     }
 

@@ -1,6 +1,7 @@
 import { Controller, Get, Post, Put, Body, Param, Delete } from '@nestjs/common';
 import { AlunoService } from './aluno.service';
 import { AlunoData } from './aluno.data';
+import { Double } from 'typeorm';
 
 @Controller('aluno')
 export class AlunoController {
@@ -37,10 +38,10 @@ export class AlunoController {
         return this.alunoService.showAlunoMedia();
     }
 
-    
+
     @Get(':nota/criterio/:criterio')
-    showAlunoCriterio(){
-        return this.alunoService.showAlunoCriterio();
+    showAlunoCriterio(@Param('nota') nota: Double, @Param('criterio') criterio : string ){
+        return this.alunoService.showAlunoCriterio(nota, criterio);
     }    
 
     //Apagar aluno 
