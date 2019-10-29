@@ -44,6 +44,12 @@ export class AlunoController {
         return this.alunoService.showAlunoCriterio(nota, criterio);
     }    
 
+    //Listar endereços de alunos 
+    @Get(':id/endereco')
+    showAllEndereco(@Param('id') id: string ){
+        return this.alunoService.showAllEndereco(id);
+    }
+
     //Apagar aluno 
     //Acabei fazendo o delete porque tive que apagar todos os alunos que ja tinha sido cadastrados 
     @Delete(':id')

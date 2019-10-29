@@ -6,12 +6,13 @@ import { AlunoEntity } from './aluno.entity';
 
 import { AlunoController } from './aluno.controller';
 import { AlunoService } from './aluno.service';
+import { EnderecoEntity } from 'src/endereco/endereco.entity';
 
 
 
 
 @Module({
-  imports:[TypeOrmModule.forFeature([AlunoEntity])],
+  imports:[TypeOrmModule.forFeature([AlunoEntity, EnderecoEntity])],
   controllers: [AlunoController],
   providers: [AlunoService]
 })

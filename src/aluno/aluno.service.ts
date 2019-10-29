@@ -3,11 +3,14 @@ import { Repository, Double, createQueryBuilder, getConnection, getRepository, }
 import { InjectRepository } from '@nestjs/typeorm';
 import { AlunoEntity } from './aluno.entity';
 import { AlunoData } from './aluno.data';
+import { EnderecoEntity } from 'src/endereco/endereco.entity';
 
 
 @Injectable()
 export class AlunoService {
-    constructor (@InjectRepository(AlunoEntity) private alunoRepository: Repository<AlunoEntity>) {} 
+    constructor (@InjectRepository(AlunoEntity) private alunoRepository: Repository<AlunoEntity>,
+                 @InjectRepository(EnderecoEntity) private enderecoRepository: Repository<EnderecoEntity>   
+    ) {} 
 
     async createAluno(data: AlunoData, cpf : AlunoData["cpf"]){
         
@@ -94,6 +97,16 @@ export class AlunoService {
         }
 
     }
+
+    //tenho certeza que não está correto, 
+    //primeiro que não está usando id para pegar o aluno apenas usando o relacionamento
+    //mas queria vê o que retornaria dessa chamada que fiz, se fosse um erro o que poderia ser etc... 
+    //mas como não está rodando devido ao erro de modulo não sei o que está retornando ao certo 
+    //pos esse relation ainda é desconhecido para mim.
+    async showAllEndereco(id:string){
+        return await this.enderecoRepository.find({relations: ['aluno']});
+    }
+
 
     async deleteAluno(id: string){
         await this.alunoRepository.delete({id});

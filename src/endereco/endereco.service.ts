@@ -3,11 +3,15 @@ import { Repository } from 'typeorm';
 import { InjectRepository } from '@nestjs/typeorm';
 import { EnderecoEntity } from './endereco.entity';
 import { EnderecoData } from './endereco.data';
+import { AlunoEntity } from 'src/aluno/aluno.entity';
 
 
 @Injectable()
 export class EnderecoService {
-    constructor(@InjectRepository(EnderecoEntity) private enderecoRepository: Repository <EnderecoEntity>) {}
+    constructor(
+        @InjectRepository(EnderecoEntity) 
+        private enderecoRepository: Repository <EnderecoEntity>
+    ) {}
 
     async CreateEndereco(data : EnderecoData){
         const endereco = await this.enderecoRepository.create(data);
