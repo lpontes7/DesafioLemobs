@@ -38,7 +38,7 @@ export class AlunoController {
         return this.alunoService.showAlunoMedia();
     }
 
-
+    //Lista de alunos e acordo com criterio e nota 
     @Get(':nota/criterio/:criterio')
     showAlunoCriterio(@Param('nota') nota: Double, @Param('criterio') criterio : string ){
         return this.alunoService.showAlunoCriterio(nota, criterio);
