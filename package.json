@@ -10,7 +10,7 @@
     "format": "prettier --write \"src/**/*.ts\" \"test/**/*.ts\"",
     "start": "nest start",
     "start:dev": "nest start --watch",
-    "start:debug": "nest start --debug --watch",
+    "start:debug": "tsc-watch -p tsconfig.build.json --onSuccess \"node --inspect-brk=0.0.0.0 dist/main.js\"",
     "start:prod": "node dist/main",
     "lint": "tslint -p tsconfig.json -c tslint.json",
     "test": "jest",
@@ -23,11 +23,15 @@
     "@nestjs/common": "^6.7.2",
     "@nestjs/core": "^6.7.2",
     "@nestjs/platform-express": "^6.7.2",
+    "@nestjs/swagger": "^3.1.0",
     "@nestjs/typeorm": "^6.2.0",
+    "class-validator": "^0.11.0",
+    "fastify-swagger": "^2.4.0",
     "pg": "^7.12.1",
     "reflect-metadata": "^0.1.13",
     "rimraf": "^3.0.0",
     "rxjs": "^6.5.3",
+    "swagger-ui-express": "^4.1.2",
     "typeorm": "^0.2.20"
   },
   "devDependencies": {
@@ -44,6 +48,7 @@
     "ts-jest": "^24.1.0",
     "ts-loader": "^6.1.1",
     "ts-node": "^8.4.1",
+    "tsc-watch": "^4.0.0",
     "tsconfig-paths": "^3.9.0",
     "tslint": "^5.20.0",
     "typescript": "^3.6.3"

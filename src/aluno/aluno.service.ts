@@ -3,7 +3,7 @@ import { Repository, Double, createQueryBuilder, getConnection, getRepository, }
 import { InjectRepository } from '@nestjs/typeorm';
 import { AlunoEntity } from './aluno.entity';
 import { AlunoData } from './aluno.data';
-import { EnderecoEntity } from 'src/endereco/endereco.entity';
+import { EnderecoEntity } from '../endereco/endereco.entity';
 
 
 @Injectable()

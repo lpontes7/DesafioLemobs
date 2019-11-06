@@ -6,7 +6,7 @@ import { AlunoEntity } from './aluno.entity';
 
 import { AlunoController } from './aluno.controller';
 import { AlunoService } from './aluno.service';
-import { EnderecoEntity } from 'src/endereco/endereco.entity';
+import { EnderecoEntity } from '../endereco/endereco.entity';
 
 
 

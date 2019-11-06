@@ -1,5 +1,5 @@
 import { Entity, PrimaryGeneratedColumn, Column, Double, OneToMany } from 'typeorm';
-import { EnderecoEntity } from 'src/endereco/endereco.entity';
+import { EnderecoEntity } from '../endereco/endereco.entity';
 
 @Entity('aluno')
 
@@ -20,6 +20,7 @@ export class AlunoEntity{
     //porem o tamanho está estabelecido e funcionando
     //Unique definido 
     @Column ({ type: 'varchar', length: 11, unique: true}) 
+    
     cpf : number;
     
     @Column ('double precision') 

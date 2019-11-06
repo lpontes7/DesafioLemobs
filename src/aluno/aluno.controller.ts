@@ -1,4 +1,4 @@
-import { Controller, Get, Post, Put, Body, Param, Delete } from '@nestjs/common';
+import { Controller, Get, Post, Put, Body, Param, Delete, ParseIntPipe } from '@nestjs/common';
 import { AlunoService } from './aluno.service';
 import { AlunoData } from './aluno.data';
 import { Double } from 'typeorm';
@@ -40,7 +40,7 @@ export class AlunoController {
 
     //Lista de alunos e acordo com criterio e nota 
     @Get(':nota/criterio/:criterio')
-    showAlunoCriterio(@Param('nota') nota: Double, @Param('criterio') criterio : string ){
+    showAlunoCriterio(@Param('nota', new ParseIntPipe()) nota: number, @Param('criterio') criterio : string ){
         return this.alunoService.showAlunoCriterio(nota, criterio);
     }    
 
