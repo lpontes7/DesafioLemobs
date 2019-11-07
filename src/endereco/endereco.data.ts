@@ -18,11 +18,6 @@ export class EnderecoData{
     @ApiModelProperty()
     bairro : string;
 
-    @ApiModelProperty()
-    @IsNotEmpty({message: "Id de aluno vazio" })
-    aluno: string
-
-    
 
 }
 
