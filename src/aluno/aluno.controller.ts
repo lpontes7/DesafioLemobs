@@ -10,12 +10,12 @@ export class AlunoController {
     //cadastrar aluno
     @Post()
     createAluno(@Body() data: AlunoData, cpf: AlunoData["cpf"]){
-        return this.alunoService.createAluno(data, cpf)
+        return this.alunoService.createAluno(data, data.cpf)
     }
 
     //atualizar dados dos aluno
     @Put(':id')
-    updateAluno(@Param('id') id: string, @Body() data : Partial<AlunoData>){
+    updateAluno(@Param('id') id: string, @Body() data : AlunoData){
         return this.alunoService.updateAluno(id, data)
     }
     

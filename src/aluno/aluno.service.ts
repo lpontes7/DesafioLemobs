@@ -22,7 +22,7 @@ export class AlunoService {
             return aluno;
         } 
         else {
-            return {Cpf : true};
+            return CpfExists;
         }
     }
 
