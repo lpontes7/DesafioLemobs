@@ -11,20 +11,14 @@ export class AlunoEntity{
     @Column ('text') 
     nome : string;
 
-    @Column('date') 
-    data_nascimento : Date;
+    @Column('text') 
+    datanascimento : string;
 
-    //Definindo tamanho CPF 
-    //Apesar de colocar CPF como number ele permite a inserção de letras
-    //infelizmente não consegui resolver a validação dessa forma
-    //porem o tamanho está estabelecido e funcionando
-    //Unique definido 
     @Column ({ type: 'varchar', length: 11, unique: true}) 
-    
     cpf : number;
     
     @Column ('double precision') 
-    nota : Double;
+    nota : number;
  
     //relacionamento um aluno pode ter 1 ou varios endereços 
 

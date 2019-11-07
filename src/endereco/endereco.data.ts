@@ -1,8 +1,28 @@
+import { IsNumber, IsNotEmpty } from 'class-validator';
+import { ApiModelProperty } from '@nestjs/swagger';
+import { ParseUUIDPipe } from '@nestjs/common';
 
-export interface EnderecoData{
- rua: string;
- numero : string;
- complemento: string;
- bairro : string;
+
+export class EnderecoData{
+ 
+    @ApiModelProperty()
+    @IsNotEmpty({ message: "Rua Vazio" })
+    rua: string;
+    
+    @ApiModelProperty()
+    numero : string;
+    
+    @ApiModelProperty()
+    complemento: string;
+    
+    @ApiModelProperty()
+    bairro : string;
+
+    @ApiModelProperty()
+    @IsNotEmpty({message: "Id de aluno vazio" })
+    aluno: string
+
+    
 
 }
+

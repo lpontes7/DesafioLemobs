@@ -1,7 +1,7 @@
 import { Controller, Get, Post, Put, Body, Param, Delete, ParseIntPipe } from '@nestjs/common';
 import { AlunoService } from './aluno.service';
 import { AlunoData } from './aluno.data';
-import { Double } from 'typeorm';
+
 
 @Controller('aluno')
 export class AlunoController {

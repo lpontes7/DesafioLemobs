@@ -13,11 +13,6 @@ export class AlunoService {
     ) {} 
 
     async createAluno(data: AlunoData, cpf : AlunoData["cpf"]){
-        
-        //Não permitir inserir cpf igual
-        //Logica não está funcionando 
-        //CPF está como unique não está adicionando igual
-        //Porem logica para avisar que já exite não está correta
 
         const CpfExists = await this.alunoRepository.findOne({ where:{cpf}});
         
@@ -98,13 +93,8 @@ export class AlunoService {
 
     }
 
-    //tenho certeza que não está correto, 
-    //primeiro que não está usando id para pegar o aluno apenas usando o relacionamento
-    //mas queria vê o que retornaria dessa chamada que fiz, se fosse um erro o que poderia ser etc... 
-    //mas como não está rodando devido ao erro de modulo não sei o que está retornando ao certo 
-    //pos esse relation ainda é desconhecido para mim.
     async showAllEndereco(id:string){
-        return await this.enderecoRepository.find({relations: ['aluno']});
+        return await this.enderecoRepository.find({where:{id}});
     }
 
 
