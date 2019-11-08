@@ -21,7 +21,6 @@ export class EnderecoService {
         
         const aluno = await this.alunoRepository.findOne({where: {id : idAluno}})
         const endereco = await this.enderecoRepository.create({...data, aluno: aluno});
-        
         await this.enderecoRepository.save(endereco);
         return {...endereco, aluno: aluno.enderecos};
     }

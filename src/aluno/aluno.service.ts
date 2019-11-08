@@ -65,6 +65,7 @@ export class AlunoService {
     }
 
      //programar a função 
+     //trocar queryBuilder por typeorm normal 
     async showAlunoCriterio(nota: Double, criterio : string){
         
 
@@ -94,7 +95,7 @@ export class AlunoService {
     }
 
     async showAllEndereco(id:string){
-        return await this.enderecoRepository.find({where:{id}});
+        await this.enderecoRepository.find({ where:{alunoId :id}});
     }
 
 
