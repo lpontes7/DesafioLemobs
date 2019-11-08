@@ -1,14 +1,15 @@
 import { Controller, Post, Get, Body, Param, Delete } from '@nestjs/common';
 import { EnderecoService } from './endereco.service';
 import { EnderecoData } from './endereco.data';
+import { AlunoData } from 'src/aluno/aluno.data';
 
 @Controller('endereco')
 export class EnderecoController {
     constructor (private enderecoService : EnderecoService){}
 
     @Post()
-    CreateEndereco(@Body() data: EnderecoData){
-        return this.enderecoService.CreateEndereco(data);
+    CreateEndereco( @Body() data: EnderecoData){
+        return this.enderecoService.CreateEndereco(data.idAluno, data);
     }
 
     @Get()
@@ -22,8 +23,8 @@ export class EnderecoController {
     }
 
     @Delete(':id')
-    deleteAluno(@Param('id') id: string){
-        return this.enderecoService.deleteAluno(id);
+    deleteEndereco(@Param('id') id: string){
+        return this.enderecoService.deleteEndereco(id);
     }
  
 

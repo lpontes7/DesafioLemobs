@@ -10,7 +10,7 @@ import { AlunoEntity } from '../aluno/aluno.entity';
 
 
 @Module({
-  imports:[TypeOrmModule.forFeature([EnderecoEntity])],
+  imports:[TypeOrmModule.forFeature([EnderecoEntity, AlunoEntity])],
   controllers: [EnderecoController],
   providers: [EnderecoService]
 })

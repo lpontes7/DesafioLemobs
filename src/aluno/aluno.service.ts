@@ -22,7 +22,7 @@ export class AlunoService {
             return aluno;
         } 
         else {
-            return CpfExists;
+            return {cpf : true};
         }
     }
 
@@ -61,7 +61,7 @@ export class AlunoService {
             .where("user.nota > :nota", { nota: media })
             .getRawMany();
         
-        return {alunMaiorMedia, media}
+        return {media, alunMaiorMedia}
     }
 
      //programar a função 
