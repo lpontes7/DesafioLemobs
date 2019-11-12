@@ -26,7 +26,7 @@ export class EnderecoService {
     }
 
     async ShowAllEndereco(){
-        return await this.enderecoRepository.find({relations:['aluno']});    
+        return await this.enderecoRepository.find({ relations:['aluno']});    
     }
 
     async ShowAllEndBairro(bairro: string){

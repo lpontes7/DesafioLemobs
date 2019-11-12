@@ -1,5 +1,5 @@
 import { Injectable } from '@nestjs/common';
-import { Repository, Double, createQueryBuilder, getConnection, getRepository, } from 'typeorm';
+import { Repository, Double, createQueryBuilder, getConnection, getRepository, MoreThan, LessThanOrEqual, } from 'typeorm';
 import { InjectRepository } from '@nestjs/typeorm';
 import { AlunoEntity } from './aluno.entity';
 import { AlunoData } from './aluno.data';
@@ -66,25 +66,27 @@ export class AlunoService {
 
      //programar a função 
      //trocar queryBuilder por typeorm normal 
-    async showAlunoCriterio(nota: Double, criterio : string){
+    async showAlunoCriterio(nota: number, criterio : string){
         
 
         if (criterio == ">"){
-            const ListaAlunos = await getRepository(AlunoEntity)
-            .createQueryBuilder("user")
-            .select("user")
-            .where("user.nota > :nota", { nota: nota })
-            .getRawMany();
-        
+            //const ListaAlunos = await getRepository(AlunoEntity)
+            //.createQueryBuilder("user")
+            //.select("user")
+            //.where("user.nota > :nota", { nota: nota })
+            // .getRawMany();
+            
+            const ListaAlunos = await this.alunoRepository.find({ nota: MoreThan(nota)});
             return {ListaAlunos};
         }
         else if (criterio == "<") {
-            const ListaAlunos = await getRepository(AlunoEntity)
-            .createQueryBuilder("user")
-            .select("user")
-            .where("user.nota < :nota", { nota: nota })
-            .getRawMany();
-        
+            //const ListaAlunos = await getRepository(AlunoEntity)
+            //.createQueryBuilder("user")
+            //.select("user")
+            //.where("user.nota < :nota", { nota: nota })
+            //.getRawMany();
+            
+            const ListaAlunos = await this.alunoRepository.find({ nota: LessThanOrEqual(nota)});
             return {ListaAlunos};
         } 
         else {
@@ -95,7 +97,11 @@ export class AlunoService {
     }
 
     async showAllEndereco(id:string){
-        await this.enderecoRepository.find({ where:{alunoId :id}});
+        //let [enderecos, total] = await this.alunoRepository.findAndCount({ relations:['enderecos'], where:{id} });  
+
+        let [enderecos, total] = await this.enderecoRepository.findAndCount({ where:{alunoId : id} });
+
+        return {total, enderecos}
     }
 
 

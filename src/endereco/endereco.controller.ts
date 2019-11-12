@@ -1,7 +1,7 @@
 import { Controller, Post, Get, Body, Param, Delete } from '@nestjs/common';
 import { EnderecoService } from './endereco.service';
 import { EnderecoData } from './endereco.data';
-import { AlunoData } from 'src/aluno/aluno.data';
+
 
 @Controller('endereco')
 export class EnderecoController {
