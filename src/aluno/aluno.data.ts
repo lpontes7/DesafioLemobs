@@ -1,5 +1,6 @@
 import { ApiModelProperty } from "@nestjs/swagger";
 import { IsNotEmpty, IsNumber } from "class-validator";
+import { IsCPF } from "../Util/ validadorCPF";
 
 
 
@@ -15,8 +16,8 @@ export class AlunoData{
     
     @ApiModelProperty()
     @IsNotEmpty({ message: 'CPF vazio' })
-    @IsNumber()
-    cpf : number;
+    @IsCPF({message: 'CPF invalido' })
+    cpf : string;
     
     @ApiModelProperty()
     @IsNotEmpty({ message: 'Nota Vazia' })

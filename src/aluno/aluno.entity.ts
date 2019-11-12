@@ -15,7 +15,7 @@ export class AlunoEntity{
     datanascimento : string;
 
     @Column ({ type: 'varchar', length: 11, unique: true}) 
-    cpf : number;
+    cpf : string;
     
     @Column ('double precision') 
     nota : number;
