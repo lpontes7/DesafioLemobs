@@ -12,7 +12,8 @@
 
 ### 1.1 Requísitos 
 
-- NodeJs, Docker e NPM ou Yarn instalados (https://nodejs.org/)
+- NodeJs, NPM ou Yarn (https://nodejs.org/)
+- Docker (https://docs.docker.com/get-docker/)
 
 ### 1.2 Configurações do Projeto 
 
