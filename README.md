@@ -44,6 +44,6 @@ http://localhost:3000/api
 ### Agradecimento
 
 - <a href="https://github.com/vitorhnn">Victor Hermann Chiletto</a>
-obrigado por toda ajuda durante o desenvolvimento do projeto :)
+obrigado por toda ajuda na parte de conclusão do desafio :)
 
  
